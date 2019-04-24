@@ -97,21 +97,40 @@
     const state = [['-', '-', '-'],
                    ['-', '-', '-'],
                    ['-', '-', '-']];
-    function move(element, row, col) {
-      console.log(`Element: ${element}, Row: ${row}, col: ${col}`);
-      // Pabaigti. (Vietoj doges turetu but X arba O) hehe
 
-if(xturn===true) element.innerHTML = "X";
-else element.innerHTML = "0";
+    function move(element, row, col) {
+      if(state[row][col]==='-') {
+          console.log(`Element: ${element}, Row: ${row}, col: ${col}`);
+          // Pabaigti. (Vietoj doges turetu but X arba O) hehe
+  
+          if(xturn===true) {
+              element.innerHTML = "X";
+              state[row][col]="X";
+          }
+          else {
+              element.innerHTML = "0";
+              state[row][col]="0";
+          }
+
       document.getElementById("turnIndicator").innerHTML = xturn;
 
       xturn=!xturn;
 
 
       checkForWin();
-    }
+      }
+}
     function checkForWin() {
-      // Pabaigti;
+if(state[row][col]!=='-') {
+      if(state[0][0]===state[0][1] && state[0][0]===state[0][2]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[1][0]===state[1][1] && state[1][0]===state[1][2]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[2][0]===state[2][1] && state[2][0]===state[2][2]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[0][0]===state[1][0] && state[0][0]===state[2][0]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[0][1]===state[1][1] && state[0][1]===state[2][1]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[0][2]===state[1][2] && state[0][2]===state[2][2]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[0][0]===state[1][1] && state[0][0]===state[2][2]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+      if(state[2][0]===state[1][1] && state[2][0]===state[0][2]) document.getElementById("turnIndicator").innerHTML = "laimejo";
+}
     }
   </script>
 </html>
